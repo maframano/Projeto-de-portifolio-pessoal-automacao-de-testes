@@ -1,0 +1,20 @@
+{
+  "name": "projeto-de-portifolio-pessoal-automacao-de-testes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maframano/Projeto-de-portifolio-pessoal-automacao-de-testes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maframano/Projeto-de-portifolio-pessoal-automacao-de-testes/issues"
+  },
+  "homepage": "https://github.com/maframano/Projeto-de-portifolio-pessoal-automacao-de-testes#readme"
+}
