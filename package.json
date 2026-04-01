@@ -1,20 +1,31 @@
 {
-  "name": "projeto-de-portifolio-pessoal-automacao-de-testes",
+  "name": "ebd-frequencia-api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "API REST para acompanhamento de frequência da Escola Bíblica Dominical (EBD)",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/maframano/Projeto-de-portifolio-pessoal-automacao-de-testes.git"
-  },
-  "keywords": [],
+  "keywords": [
+    "EBD",
+    "API",
+    "Express",
+    "CSV",
+    "Frequência"
+  ],
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/maframano/Projeto-de-portifolio-pessoal-automacao-de-testes/issues"
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "csv-parser": "^3.2.0",
+    "csv-writer": "^1.6.0",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "jsonwebtoken": "^9.0.3",
+    "swagger-ui-express": "^4.6.3"
   },
-  "homepage": "https://github.com/maframano/Projeto-de-portifolio-pessoal-automacao-de-testes#readme"
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
 }
