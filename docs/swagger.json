@@ -5,12 +5,58 @@
     "version": "1.0.0",
     "description": "API para acompanhamento de frequência de alunos na Escola Bíblica Dominical."
   },
+  "tags": [
+    { "name": "Cadastro", "description": "Endpoints de cadastro de secretária, professor e aluno" },
+    { "name": "Secretaria", "description": "Operações de secretária" },
+    { "name": "Professor", "description": "Operações de professor" },
+    { "name": "Aluno", "description": "Operações de aluno" },
+    { "name": "Autenticação", "description": "Login e autenticação" },
+    { "name": "Presença", "description": "Operações de presença" },
+    { "name": "Relatório", "description": "Relatórios diversos" }
+  ],
   "servers": [
     { "url": "http://localhost:3000" }
   ],
   "paths": {
+    "/secretaria": {
+      "post": {
+        "tags": ["Cadastro"],
+        "summary": "Cadastrar secretária",
+        "responses": { "201": { "description": "Secretária cadastrada" } }
+      },
+      "get": {
+        "tags": ["Secretaria"],
+        "summary": "Listar secretárias",
+        "responses": { "200": { "description": "Lista de secretárias" } }
+      }
+    },
+    "/professores": {
+      "post": {
+        "tags": ["Cadastro"],
+        "summary": "Cadastrar professor",
+        "responses": { "201": { "description": "Professor cadastrado" } }
+      },
+      "get": {
+        "tags": ["Professor"],
+        "summary": "Listar professores",
+        "responses": { "200": { "description": "Lista de professores" } }
+      }
+    },
+    "/alunos": {
+      "post": {
+        "tags": ["Cadastro"],
+        "summary": "Cadastrar aluno",
+        "responses": { "201": { "description": "Aluno cadastrado" } }
+      },
+      "get": {
+        "tags": ["Aluno"],
+        "summary": "Listar alunos",
+        "responses": { "200": { "description": "Lista de alunos" } }
+      }
+    },
     "/auth/login": {
       "post": {
+        "tags": ["Autenticação"],
         "summary": "Login da secretária",
         "requestBody": {
           "required": true,
@@ -33,39 +79,54 @@
         }
       }
     },
-    "/alunos": {
-      "get": { "summary": "Listar alunos", "responses": { "200": { "description": "Lista de alunos" } } },
-      "post": { "summary": "Cadastrar aluno", "responses": { "201": { "description": "Aluno cadastrado" } } }
-    },
-    "/professores": {
-      "get": { "summary": "Listar professores", "responses": { "200": { "description": "Lista de professores" } } },
-      "post": { "summary": "Cadastrar professor", "responses": { "201": { "description": "Professor cadastrado" } } }
-    },
-    "/secretaria": {
-      "get": { "summary": "Listar secretárias", "responses": { "200": { "description": "Lista de secretárias" } } },
-      "post": { "summary": "Cadastrar secretária", "responses": { "201": { "description": "Secretária cadastrada" } } }
-    },
     "/presencas": {
-      "get": { "summary": "Listar presenças", "responses": { "200": { "description": "Lista de presenças" } } },
-      "post": { "summary": "Registrar presença", "responses": { "201": { "description": "Presença registrada" } } }
+      "get": {
+        "tags": ["Presença"],
+        "summary": "Listar presenças",
+        "responses": { "200": { "description": "Lista de presenças" } }
+      },
+      "post": {
+        "tags": ["Presença"],
+        "summary": "Registrar presença",
+        "responses": { "201": { "description": "Presença registrada" } }
+      }
     },
     "/relatorios/presencas/domingo/{data}": {
-      "get": { "summary": "Presença por classe em um domingo", "parameters": [{ "name": "data", "in": "path", "required": true, "schema": { "type": "string" } }], "responses": { "200": { "description": "Presença por classe" } } }
+      "get": {
+        "tags": ["Relatório"],
+        "summary": "Presença por classe em um domingo",
+        "parameters": [{ "name": "data", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": { "200": { "description": "Presença por classe" } }
+      }
     },
     "/relatorios/presencas/trimestre/{ano}/{trimestre}": {
-      "get": { "summary": "Presença acumulada por classe no trimestre", "parameters": [
-        { "name": "ano", "in": "path", "required": true, "schema": { "type": "string" } },
-        { "name": "trimestre", "in": "path", "required": true, "schema": { "type": "string" } }
-      ], "responses": { "200": { "description": "Presença acumulada por classe" } } }
+      "get": {
+        "tags": ["Relatório"],
+        "summary": "Presença acumulada por classe no trimestre",
+        "parameters": [
+          { "name": "ano", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "trimestre", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": { "200": { "description": "Presença acumulada por classe" } }
+      }
     },
     "/relatorios/vencedores/trimestre/{ano}/{trimestre}": {
-      "get": { "summary": "Classe vencedora e aluno ganhador por classe no trimestre", "parameters": [
-        { "name": "ano", "in": "path", "required": true, "schema": { "type": "string" } },
-        { "name": "trimestre", "in": "path", "required": true, "schema": { "type": "string" } }
-      ], "responses": { "200": { "description": "Classe vencedora e aluno ganhador por classe" } } }
+      "get": {
+        "tags": ["Relatório"],
+        "summary": "Classe vencedora e aluno ganhador por classe no trimestre",
+        "parameters": [
+          { "name": "ano", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "trimestre", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": { "200": { "description": "Classe vencedora e aluno ganhador por classe" } }
+      }
     },
     "/relatorios/aniversariantes": {
-      "get": { "summary": "Lista de aniversariantes", "responses": { "200": { "description": "Lista de aniversariantes" } } }
+      "get": {
+        "tags": ["Relatório"],
+        "summary": "Lista de aniversariantes",
+        "responses": { "200": { "description": "Lista de aniversariantes" } }
+      }
     }
   }
 }
