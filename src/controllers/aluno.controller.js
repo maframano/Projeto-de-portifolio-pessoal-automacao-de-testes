@@ -2,7 +2,8 @@ const alunoModel = require('../models/aluno.model');
 
 exports.listarAlunos = async (req, res) => {
   try {
-    const alunos = await alunoModel.getAll();
+    const pessoas = await alunoModel.getAll();
+    const alunos = pessoas.filter(p => p.funcao === 'aluno');
     res.json(alunos);
   } catch (err) {
     res.status(500).json({ message: 'Erro ao listar alunos.' });
@@ -13,7 +14,7 @@ exports.cadastrarAluno = async (req, res) => {
   try {
     const novoAluno = req.body;
     // Validação básica
-    if (!novoAluno.nome || !novoAluno.data_nascimento || !novoAluno.sexo || !novoAluno.estado_civil) {
+    if (!novoAluno.nome || !novoAluno.data_nascimento || !novoAluno.sexo || !novoAluno.estado_civil || !novoAluno.telefone) {
       return res.status(400).json({ message: 'Campos obrigatórios não preenchidos.' });
     }
     // Alocação automática de classe
@@ -38,7 +39,7 @@ exports.cadastrarAluno = async (req, res) => {
     novoAluno.data_matricula = hoje.toISOString().slice(0, 10);
     novoAluno.ativo = 'true';
     // Salvar aluno
-    const alunoSalvo = await alunoModel.save(novoAluno);
+    const alunoSalvo = await alunoModel.save({ ...novoAluno, funcao: 'aluno' });
     res.status(201).json(alunoSalvo);
   } catch (err) {
     res.status(500).json({ message: 'Erro ao cadastrar aluno.' });
