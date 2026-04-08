@@ -1,0 +1,4 @@
+id,nome,data_nascimento,telefone,email,funcao,classe_id,data_matricula,ativo,sexo,estado_civil,senha_hash
+1,Mafra Mano,1980-09-20,13992048761,maframano@hotmail.com,secretaria,,,,,,
+2,Mafra Mano,1980-09-20,13992048761,,professor,,,,feminino,,
+3,Renisson Hora da Conceição,1994-01-27,string,,aluno,abraao,2026-04-08,true,masculino,casado,

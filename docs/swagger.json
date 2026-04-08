@@ -22,6 +22,24 @@
       "post": {
         "tags": ["Cadastro"],
         "summary": "Cadastrar secretária",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": { "type": "string" },
+                  "data_nascimento": { "type": "string", "format": "date" },
+                  "telefone": { "type": "string" },
+                  "email": { "type": "string" },
+                  "senha": { "type": "string" }
+                },
+                "required": ["nome", "data_nascimento", "telefone", "email", "senha"]
+              }
+            }
+          }
+        },
         "responses": { "201": { "description": "Secretária cadastrada" } }
       },
       "get": {
@@ -34,6 +52,23 @@
       "post": {
         "tags": ["Cadastro"],
         "summary": "Cadastrar professor",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": { "type": "string" },
+                  "data_nascimento": { "type": "string", "format": "date" },
+                  "telefone": { "type": "string" },
+                  "sexo": { "type": "string" }
+                },
+                "required": ["nome", "data_nascimento", "telefone", "sexo"]
+              }
+            }
+          }
+        },
         "responses": { "201": { "description": "Professor cadastrado" } }
       },
       "get": {
@@ -46,6 +81,24 @@
       "post": {
         "tags": ["Cadastro"],
         "summary": "Cadastrar aluno",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": { "type": "string" },
+                  "data_nascimento": { "type": "string", "format": "date" },
+                  "telefone": { "type": "string" },
+                  "sexo": { "type": "string" },
+                  "estado_civil":{ "type": "string"}
+                },
+                "required": ["nome", "data_nascimento", "telefone", "sexo", "estado_civil"]
+              }
+            }
+          }
+        },
         "responses": { "201": { "description": "Aluno cadastrado" } }
       },
       "get": {
